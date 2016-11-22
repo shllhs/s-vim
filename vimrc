@@ -47,6 +47,30 @@ filetype plugin indent on
 "==========================================
 
 
+ """""""""""""""     
+ "Quickly Run     
+ """"""""""""""""" 
+ map <F5> :call CompileRunGcc()<CR> 
+ func! CompileRunGcc() 
+     exec "w" 
+     if &filetype == 'c' 
+         exec "!g++ % -o %<" 
+         exec "!time ./%<" 
+     elseif &filetype == 'cpp'
+         exec "!g++ % -o %<" 
+         exec "!time ./%<" 
+     elseif &filetype == 'java' 
+         exec "!javac %" 
+         exec "!time java %<" 
+     elseif &filetype == 'sh' 
+         :!time bash % 
+     elseif &filetype == 'python' 
+         exec "!time python2.7 %" 
+     elseif &filetype == 'html' 
+         exec "!firefox % &" 
+    endif 
+endfunc
+
 " history存储容量
 set history=2000
 
@@ -98,7 +122,7 @@ set cursorline
 
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
 " 好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+"set t_ti= t_te=
 
 
 " 鼠标暂不启用, 键盘党....
@@ -528,12 +552,20 @@ nnoremap <leader>v V`}
 cmap w!! w !sudo tee >/dev/null %
 
 " kj 替换 Esc
-inoremap kj <Esc>
+inoremap jj <Esc>
 
 " 滚动Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
+"map ctrl+s
+inoremap <C-s> <esc>:w<cr>a
+nnoremap <C-s> :w<cr>a
+
+"map indent
+"inoremap {<cr> {<cr>}<c-o>O<tab>
+"inoremap [<cr> [<cr>]<c-o>O<tab>
+"inoremap (<cr> (<cr>)<c-o>O<tab>
 
 " Jump to start and end of line using the home row keys
 " 增强tab操作, 导致这个会有问题, 考虑换键
@@ -665,8 +697,8 @@ endif
 set background=dark
 set t_Co=256
 
-colorscheme solarized
-" colorscheme molokai
+" colorscheme solarized 
+colorscheme molokai
 " colorscheme desert
 
 

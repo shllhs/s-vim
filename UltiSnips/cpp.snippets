@@ -1,0 +1,28 @@
+snippet header
+
+#include<bits/stdc++.h>
+#define FOR(i,a,b) for(int i = (a);i<=(b);i++)
+#define ROF(i,a,b) for(int i = (a);i>=(b);i--)
+#define MST(a,x) memset(a,x,sizeof(a))
+#define ll long long
+#define PB push_back
+#define PH push
+#define MP make_pair
+#define FT first
+#define SD second
+#define N 200004
+#define M 51
+#define INF 1000000007
+#define MOD 1000000007
+#define MOD2 1000000009
+#define eps 1e-14
+using namespace std;
+inline int Max(int a,int b)
+{
+    return (((b-a)>>(32-1))&(a^b))^b;
+}
+inline int Min(int a,int b)
+{
+	return (((b-a)>>(32-1))&(a^b))^a;
+}
+endsnippet

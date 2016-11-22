@@ -51,6 +51,7 @@ Plug 'docunext/closetag.vim'
 " 快速注释
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'ap/vim-buftabline'
 
 " 快速加入修改环绕字符
 " for repeat -> enhance surround.vim, . to repeat command
