@@ -7,34 +7,41 @@
 " Donation: http://www.wklken.me/pages/donation.html
 " Last_modify: 2015-12-15
 " Sections:
-"       -> Initial Plugin 加载插件
-"       -> General Settings 基础设置
-"       -> Display Settings 展示/排版等界面格式设置
-"       -> FileEncode Settings 文件编码设置
-"       -> Others 其它配置
-"       -> HotKey Settings  自定义快捷键
-"       -> FileType Settings  针对文件类型的设置
-"       -> Theme Settings  主题设置
+"       -> Initial Plugin ________
+"       -> General Settings ________
+"       -> Display Settings ____/__________________
+"       -> FileEncode Settings ____________
+"       -> Others ________
+"       -> HotKey Settings  ____________
+"       -> FileType Settings  __________________
+"       -> Theme Settings  ________
 "
-"       -> 插件配置和具体设置在vimrc.bundles中
+"       -> ____________________vimrc.bundles__
 "==========================================
 
 "==========================================
-" Initial Plugin 加载插件
+" Initial Plugin ________
 "==========================================
 
-" 修改leader键
+" ____leader__
 let mapleader = ','
 let g:mapleader = ','
+let g:ConqueGdb_Leader = '.'
 
+"map enter to create blank line
+map <Leader><S-Enter> O<ESC>
+map <Leader><Enter> o<ESC>
+
+" let extension = expand("%:e")
+autocmd BufReadPre,FileReadPre * execute ":nnoremap <Leader>b :vimgrep // **/*.".expand("%:e")"<left><left><left><left><left><left><left><left><left>"
 " 开启语法高亮
 syntax on
 
 " install bundles
 if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+    source ~/.vimrc.bundles
 elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
-  source ~/.config/nvim/vimrc.bundles
+    source ~/.config/nvim/vimrc.bundles
 endif
 
 " ensure ftdetect et al work by including this after the bundle stuff
@@ -46,36 +53,6 @@ filetype plugin indent on
 " General Settings 基础设置
 "==========================================
 
-
-"set copy and paste
-set clipboard+=unnamed  " use the clipboards of vim and win
-set paste               " Paste from a windows or from vim
-set go+=a               " Visual selection automatically copied to the clipboard"
-
-
- """""""""""""""     
- "Quickly Run     
- """"""""""""""""" 
- map <F5> :call CompileRunGcc()<CR> 
- func! CompileRunGcc() 
-     exec "w" 
-     if &filetype == 'c' 
-         exec "!g++ % -o %<" 
-         exec "!time ./%<" 
-     elseif &filetype == 'cpp'
-         exec "!g++ % -o %<" 
-         exec "!time ./%<" 
-     elseif &filetype == 'java' 
-         exec "!javac %" 
-         exec "!time java %<" 
-     elseif &filetype == 'sh' 
-         :!time bash % 
-     elseif &filetype == 'python' 
-         exec "!time python2.7 %" 
-     elseif &filetype == 'html' 
-         exec "!firefox % &" 
-    endif 
-endfunc
 
 " history存储容量
 set history=2000
@@ -108,14 +85,14 @@ set noswapfile
 " TODO: remove this, use gundo
 " create undo file
 " if has('persistent_undo')
-  " " How many undos
-  " set undolevels=1000
-  " " number of lines to save for undo
-  " set undoreload=10000
-  " " So is persistent undo ...
-  " "set undofile
-  " set noundofile
-  " " set undodir=/tmp/vimundo/
+" " How many undos
+" set undolevels=1000
+" " number of lines to save for undo
+" set undoreload=10000
+" " So is persistent undo ...
+" "set undofile
+" set noundofile
+" " set undodir=/tmp/vimundo/
 " endif
 
 set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
@@ -264,21 +241,21 @@ au FocusGained * :set relativenumber
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
+    if(&relativenumber == 1)
+        set norelativenumber number
+    else
+        set relativenumber
+    endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
 if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
 endif
 
 "==========================================
@@ -345,7 +322,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "==========================================
@@ -376,14 +353,14 @@ noremap <F1> <Esc>"
 " F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:
 function! HideNumber()
-  if(&relativenumber == &number)
-    set relativenumber! number!
-  elseif(&number)
-    set number!
-  else
-    set relativenumber!
-  endif
-  set number?
+    if(&relativenumber == &number)
+        set relativenumber! number!
+    elseif(&number)
+        set number!
+    else
+        set relativenumber!
+    endif
+    set number?
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
 " F3 显示可打印字符开关
@@ -395,8 +372,8 @@ nnoremap <F4> :set wrap! wrap?<CR>
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
-                                "    paste mode, where you can paste mass data
-                                "    that won't be autoindented
+"    paste mode, where you can paste mass data
+"    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
@@ -405,9 +382,9 @@ au InsertLeave * set nopaste
 " F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
 endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
@@ -487,7 +464,6 @@ nnoremap ]b :bnext<cr>
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
 
-
 " tab 操作
 " http://vim.wikia.com/wiki/Alternative_tab_navigation
 " http://stackoverflow.com/questions/2005214/switching-to-a-particular-tab-in-vim
@@ -548,9 +524,6 @@ vnoremap <leader>y "+y
 " vnoremap <silent> p p`]
 " nnoremap <silent> p p`]
 
-" select all
-map <Leader>sa ggVG
-
 " select block
 nnoremap <leader>v V`}
 
@@ -578,11 +551,6 @@ nnoremap <C-s> :w<cr>a
 "nmap t o<ESC>k
 "nmap T O<ESC>j
 
-" Quickly close the current window
-nnoremap <leader>q :q<CR>
-
-" Quickly save the current file
-nnoremap <leader>w :w<CR>
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
 nnoremap ' `
@@ -641,11 +609,11 @@ endfunc
 
 " 设置可以高亮的关键字
 if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, etc.
-  if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
-    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
-  endif
+    " Highlight TODO, FIXME, NOTE, etc.
+    if v:version > 701
+        autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
+        autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+    endif
 endif
 
 "==========================================
@@ -671,8 +639,8 @@ endif
 " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " if exists('$TMUX')
-    " let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    " let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 " endif
 
 
@@ -703,7 +671,7 @@ endif
 set background=dark
 set t_Co=256
 
-" colorscheme solarized 
+" colorscheme solarized
 colorscheme molokai
 " colorscheme desert
 
@@ -722,6 +690,7 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
 
 
 
