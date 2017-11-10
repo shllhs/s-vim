@@ -1,11 +1,8 @@
 "==========================================
-" Author:  wklken
+" Author:  shllhs
 " Version: 9.1
-" Email: wklken@yeah.net
-" BlogPost: http://www.wklken.me
+" Email: shllhs@126.com
 " ReadMe: README.md
-" Donation: http://www.wklken.me/pages/donation.html
-" Last_modify: 2015-12-15
 " Sections:
 "       -> Initial Plugin ________
 "       -> General Settings ________

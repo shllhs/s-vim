@@ -1,6 +1,7 @@
-k-vim
+s-vim
 =======================
 
+**Note**: modified from k-vim 
 **Note**: 9.1版本的文档/wiki等, 处理中(原先的常见问题FAQ/插件演示和使用/自定义快捷键等)
 
 当前进度30%
@@ -18,11 +19,6 @@ k-vim
 # 目标
 
 > Just a Better Vim Config. Keep it Simple.
-
-
-**PS**: 服务器端无插件`k-vim`简化版本(curl直接设置vimrc即可)[vim-for-server](https://github.com/wklken/vim-for-server)
-
-**PPS**: 一份tmux配置 [k-tmux](https://github.com/wklken/k-tmux)
 
 ---------------------------------
 
