@@ -218,7 +218,7 @@ set softtabstop=4
 " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
 set smarttab
 " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-set expandtab
+" set expandtab
 " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
 
@@ -613,6 +613,19 @@ if has("autocmd")
     endif
 endif
 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_py_pylint_args = "-E"
+let g:pymode_lint_write = 0
+
 "==========================================
 " TEMP 设置, 尚未确定要不要
 "==========================================
@@ -667,6 +680,7 @@ endif
 " theme主题
 set background=dark
 set t_Co=256
+set nomodeline
 
 " colorscheme solarized
 colorscheme molokai

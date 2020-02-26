@@ -77,6 +77,8 @@ Plug 'vim-scripts/matchit.zip'
 " m/        list all marks
 Plug 'kshenoy/vim-signature'
 
+Plug 'vim-syntastic/syntastic'
+
 " 多光标选中编辑
 " multiplecursors
 Plug 'terryma/vim-multiple-cursors'

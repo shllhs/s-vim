@@ -65,6 +65,7 @@ echo "Step2: setting up symlinks"
 if $FOR_VIM; then
     lnif $CURRENT_DIR/vimrc $HOME/.vimrc
     lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
+    lnif $CURRENT_DIR/.pylintrc $HOME/.pylintrc
     lnif "$CURRENT_DIR/" "$HOME/.vim"
 fi
 if $FOR_NEOVIM; then
