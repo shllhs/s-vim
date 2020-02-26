@@ -37,7 +37,7 @@ call plug#begin('~/.vim/bundle')
 " 迄今为止用到的最好的自动VIM自动补全插件
 " 重启 :YcmRestartServer
 " Plug 'Valloric/YouCompleteMe'
-Plug 'https://github.com/davidhalter/jedi-vim.git'
+" Plug 'https://github.com/davidhalter/jedi-vim.git'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
 " 自动补全html/xml标签
@@ -790,6 +790,6 @@ call plug#end()
     " setenv PYTHONIOENCODING UTF-8
     " nnoremap <leader>y :call Yapf()<cr>
 " }}}
-let g:jedi#force_py_version=3
-let g:jedi#usages_command = "<leader>m"
+" let g:jedi#force_py_version=3
+" let g:jedi#usages_command = "<leader>m"
 "------------------------------------------- end of configs --------------------------------------------
