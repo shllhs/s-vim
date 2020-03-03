@@ -131,6 +131,12 @@ Plug 'kien/rainbow_parentheses.vim'
 " 主题 molokai
 Plug 'tomasr/molokai'
 
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
+
 
 " nav
 " nerdtree nerdtreetabs
@@ -388,7 +394,7 @@ call plug#end()
 
 
 " ultisnips {{{
-    let g:UltiSnipsExpandTrigger       = "<tab>"
+    let g:UltiSnipsExpandTrigger       = "<C-q>"
     let g:UltiSnipsJumpForwardTrigger  = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
     let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
